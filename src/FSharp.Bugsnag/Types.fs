@@ -3,8 +3,15 @@
 module Types =
   open Newtonsoft.Json.Serialization
 
-  type Severity = Error | Warning | Info
-  type ReleaseStage = Development | Staging | Production
+  type Severity =
+    Error
+    | Warning
+    | Info
+
+  type ReleaseStage =
+    Development
+    | Staging
+    | Production
 
   type Notifier =
     {
@@ -72,7 +79,7 @@ module Types =
   type Event =
     {
       [<JsonProperty(PropertyName = "payloadVersion")>]
-      PayloadVersion : int
+      PayloadVersion : string
       [<JsonProperty(PropertyName = "exceptions")>]
       Exceptions : Exception list
       // TODO: Threads
@@ -83,9 +90,9 @@ module Types =
       [<JsonProperty(PropertyName = "severity")>]
       Severity : Severity
       [<JsonProperty(PropertyName = "app")>]
-      App : AppInfo
+      App : AppInfo option
       [<JsonProperty(PropertyName = "device")>]
-      Device : Device
+      Device : Device option
     }
 
   type BugsnagPaylod =
@@ -96,5 +103,16 @@ module Types =
       Notifier : Notifier
       [<JsonProperty(PropertyName = "events")>]
       Events : Event list
+    }
+
+  type BugsnagAppSettings =
+    {
+      ApiKey: string option
+      ReleaseStage: ReleaseStage
+      UseSSL: bool
+      User : User option
+      AppInfo : AppInfo option
+      Device : Device option
+      MetaData : string option
     }
 

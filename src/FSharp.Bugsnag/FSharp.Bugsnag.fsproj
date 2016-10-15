@@ -52,7 +52,8 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Types.fs" />
-    <Compile Include="BugsnagHttpClient.fs" />
+    <Compile Include="ExceptionConverter.fs" />
+    <Compile Include="Client.fs" />
     <Compile Include="Bugsnag.fs" />
     <Content Include="packages.config" />
   </ItemGroup>

@@ -7,7 +7,14 @@ module Client =
 
   let private _bugsnagUrl = "https://notify.bugsnag.com"
 
-  let send (body : string) =
+  let send body =
+    Http.Request(
+      _bugsnagUrl,
+      headers = [ ContentType HttpContentTypes.Json ],
+      httpMethod = "POST",
+      body = TextRequest body)
+
+  let sendAsync body =
     Http.AsyncRequest(
       _bugsnagUrl,
       headers = [ ContentType HttpContentTypes.Json ],
