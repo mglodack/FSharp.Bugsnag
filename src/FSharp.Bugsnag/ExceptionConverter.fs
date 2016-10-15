@@ -9,7 +9,7 @@ module ExceptionConverter =
     | null -> List.empty<System.Exception>
     | _ -> ex :: (unwrapException ex.InnerException)
 
-  let createBugsnagExceptions(unwrappedExceptions : System.Exception list) =
+  let convertToBugsnagExceptions(unwrappedExceptions : System.Exception list) =
     unwrappedExceptions
     |> List.map (fun ex ->
       {
@@ -40,7 +40,7 @@ module ExceptionConverter =
         PayloadVersion = "2"
         Exceptions =
           unwrapException ex
-          |> createBugsnagExceptions
+          |> convertToBugsnagExceptions
         Context = Some((getContext ex))
         GroupingHash = (getGroupingHash ex)
         Severity = severity
