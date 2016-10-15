@@ -1,0 +1,5 @@
+source https://nuget.org/api/v2
+
+nuget fake
+nuget FSharp.FakeTargets
+nuget NuGet.CommandLine 3.4.4-rtm-final

@@ -3,18 +3,17 @@
 open System.Reflection
 open System.Runtime.CompilerServices
 open System.Runtime.InteropServices
+open System.Resources
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [<assembly: AssemblyTitle("FSharp.Bugsnag")>]
-[<assembly: AssemblyDescription("")>]
-[<assembly: AssemblyConfiguration("")>]
-[<assembly: AssemblyCompany("")>]
+[<assembly: AssemblyDescription("F# Bugsnag Error Reporting Wrapper ")>]
+[<assembly: AssemblyCompany("Mathew Glodack")>]
 [<assembly: AssemblyProduct("FSharp.Bugsnag")>]
 [<assembly: AssemblyCopyright("Copyright ©  2016")>]
-[<assembly: AssemblyTrademark("")>]
-[<assembly: AssemblyCulture("")>]
+[<assembly: NeutralResourcesLanguage("en")>]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
