@@ -1,9 +1,8 @@
 ﻿namespace FSharp.Bugsnag
+open System
 
-module Client =
-  type Severity = Error | Warning | Info
-
-  type ReleaseStage = Development | Staging | Production
+module Reporting =
+  open FSharp.Bugsnag.Types
 
   type BugsnagConfig =
     {
@@ -18,4 +17,3 @@ module Client =
       ReleaseStage = ReleaseStage.Development
       UseSSL = true
     }
-
