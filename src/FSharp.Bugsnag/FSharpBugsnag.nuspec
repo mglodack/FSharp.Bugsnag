@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>$id$</id>
+    <version>$version$</version>
+    <tilte>$title$</title>
+    <authors>Mathew Glodack</authors>
+    <owners>Mathew Glodack</owners>
+    <licenseUrl>https://github.com/mglodack/FSharp.Bugsnag/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/mglodack/Fsharp.Bugsnag</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2016</copyright>
+  </metadata>
+</package>
