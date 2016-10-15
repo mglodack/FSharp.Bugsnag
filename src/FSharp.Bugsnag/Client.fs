@@ -25,7 +25,6 @@ module Client =
           body = TextRequest body)
 
       _matchResponseStatusCode response.StatusCode
-
     with
     | :? System.Exception as ex -> Failure (ErrorResponseTypes.Exception ex)
 
@@ -36,4 +35,3 @@ module Client =
       headers = [ ContentType HttpContentTypes.Json ],
       httpMethod = "POST",
       body = TextRequest body)
-

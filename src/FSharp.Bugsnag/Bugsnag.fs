@@ -1,14 +1,14 @@
 ﻿namespace FSharp.Bugsnag
 
 module Reporting =
-  open FSharp.Bugsnag.Types
-  open FSharp.Bugsnag.ExceptionConverter
   open FSharp.Bugsnag.Client
+  open FSharp.Bugsnag.ExceptionConverter
   open FSharp.Bugsnag.Internal
+  open FSharp.Bugsnag.Types
+  open Newtonsoft.Json
   open Newtonsoft.Json.Converters
   open System
   open System.Reflection
-  open Newtonsoft.Json
 
   let private _bugsnagAppSettingDefaults () =
     {
