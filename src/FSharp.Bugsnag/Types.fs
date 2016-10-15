@@ -3,6 +3,18 @@
 module Types =
   open Newtonsoft.Json.Serialization
 
+  type Result<'TSuccess, 'TFailure> =
+    Success of 'TSuccess
+    | Failure of 'TFailure
+
+  type SuccessResponseTypes = OK
+
+  type ErrorResponseTypes =
+    BadRequest
+    | RequestTimeout
+    | Unknown of int
+    | Exception of System.Exception
+
   type Severity =
     Error
     | Warning
@@ -46,7 +58,6 @@ module Types =
       [<JsonProperty(PropertyName = "stacktrace")>]
       StackTrace : StackTrace list
     }
-
 
   type User =
     {
@@ -98,7 +109,7 @@ module Types =
   type BugsnagPaylod =
     {
       [<JsonProperty(PropertyName = "apiKey")>]
-      ApiKey : string
+      ApiKey : string option
       [<JsonProperty(PropertyName = "notifier")>]
       Notifier : Notifier
       [<JsonProperty(PropertyName = "events")>]
@@ -113,6 +124,5 @@ module Types =
       User : User option
       AppInfo : AppInfo option
       Device : Device option
-      MetaData : string option
+      MetaData : obj option
     }
-

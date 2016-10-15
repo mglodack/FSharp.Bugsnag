@@ -4,12 +4,13 @@ module Reporting =
   open FSharp.Bugsnag.Types
   open FSharp.Bugsnag.ExceptionConverter
   open FSharp.Bugsnag.Client
+  open FSharp.Bugsnag.Internal
   open Newtonsoft.Json.Converters
   open System
   open System.Reflection
   open Newtonsoft.Json
 
-  let bugsnagAppSettingDefaults () =
+  let private _bugsnagAppSettingDefaults () =
     {
       ApiKey = None
       ReleaseStage = ReleaseStage.Development
@@ -20,34 +21,32 @@ module Reporting =
       MetaData = None
     }
 
-  let notifier () =
+  let private _notifier () =
     {
       Name = "FSharp.Bugsnag"
       Version = Assembly.GetExecutingAssembly().GetName().Version.ToString()
       Url = "https://github.com/mglodack/FSharp.Bugsnag"
     }
 
-  let private _verifyApiKey apiKey =
-    match apiKey with
-    | Some key -> key
-    | None -> "ERROR"
-
   let private _preparePayload(bugsnagMapParams, severity, ex : Exception) =
     let parameters =
-      bugsnagAppSettingDefaults()
+      _bugsnagAppSettingDefaults()
       |> bugsnagMapParams
 
     let payload =
       {
-        ApiKey = _verifyApiKey parameters.ApiKey
-        Notifier = notifier()
+        ApiKey = parameters.ApiKey
+        Notifier = _notifier()
         Events = convert(parameters, severity, ex)
       }
 
-    JsonConvert.SerializeObject(payload)
+    let settings = new JsonSerializerSettings(NullValueHandling = NullValueHandling.Ignore)
+    settings.Converters.Add(new IdiomaticDuConverter())
+    JsonConvert.SerializeObject(payload, settings)
 
   let notify(bugsnagMapParams, severity, ex : Exception) =
     send(_preparePayload(bugsnagMapParams, severity, ex))
 
   let notifyAsync(bugsnagMapParams, severity, ex : Exception) =
     sendAsync(_preparePayload(bugsnagMapParams, severity, ex))
+
