@@ -2,7 +2,7 @@
 
 module Reporting =
   open FSharp.Bugsnag.Client
-  open FSharp.Bugsnag.ExceptionConverter
+  open FSharp.Bugsnag.Formatting.ExceptionConverter
   open FSharp.Bugsnag.Internal
   open FSharp.Bugsnag.Types
   open Newtonsoft.Json
